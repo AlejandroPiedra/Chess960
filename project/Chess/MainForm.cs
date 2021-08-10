@@ -112,6 +112,52 @@ namespace Chess
             endCurrentGameToolStripMenuItem.Enabled = true;
         }
 
+        private void NewChess960Game(int nPlayers)
+        {
+            // clean up all of the things first
+            if (!m_manualBoard) Stop();
+
+            // create new game for number of players
+            m_aigame = (nPlayers == 0);
+            chess = new Chess(this, nPlayers, !m_manualBoard);
+
+            // show turn status
+            SetTurn(Player.WHITE);
+            SetStatus(false, "White's turn");
+
+            // reset timers
+            m_whiteTime = new TimeSpan(0);
+            m_blackTime = new TimeSpan(0);
+            lblWhiteTime.Text = m_whiteTime.ToString("c");
+            lblBlackTime.Text = m_blackTime.ToString("c");
+
+            // show ai difficulty
+            if (nPlayers < 2)
+            {
+                LogMove("AI Difficulty " + (string)temp.Tag + "\n");
+            }
+
+            if (m_manualBoard)
+            {
+                // allow setting up the board
+                SetStatus(false, "You may now place pieces via the menu.");
+                setPieceToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                // start the game
+                SetStatus(false, "White's Turn");
+                if (m_aigame)
+                {
+                    new Thread(chess.AISelect).Start();
+                }
+                tmrWhite.Start();
+            }
+
+            // allow stopping the game
+            endCurrentGameToolStripMenuItem.Enabled = true;
+        }
+
         public void SetTurn(Player p)
         {
             // if a thread called this, invoke recursion
@@ -219,7 +265,9 @@ namespace Chess
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            NewGame(0);
+            NewChess960Game(0);
         }
+
+        
     }
 }
