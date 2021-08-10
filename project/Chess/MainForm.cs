@@ -20,6 +20,7 @@ namespace Chess
         Piece m_manualPiece = Piece.PAWN;
 
         Chess chess;
+        Chess960 chess960;
                 
         /// <summary>
         /// Stop all current activity / games and reset everything.
@@ -31,6 +32,7 @@ namespace Chess
             // stop the ai and reset chess
             AI.STOP = true;
             chess = null;
+            chess960 = null;
 
             // reset turn indicator
             SetTurn(Player.WHITE);
@@ -119,7 +121,7 @@ namespace Chess
 
             // create new game for number of players
             m_aigame = (nPlayers == 0);
-            chess = new Chess(this, nPlayers, !m_manualBoard);
+            chess960 = new Chess960(this, nPlayers, !m_manualBoard);
 
             // show turn status
             SetTurn(Player.WHITE);
@@ -149,7 +151,7 @@ namespace Chess
                 SetStatus(false, "White's Turn");
                 if (m_aigame)
                 {
-                    new Thread(chess.AISelect).Start();
+                    new Thread(chess960.AISelect).Start();
                 }
                 tmrWhite.Start();
             }
@@ -176,6 +178,14 @@ namespace Chess
             {
                 picTurn.Image = graphics.TurnIndicator[Player.WHITE];
             }
+            if (chess960 != null)
+            {
+                picTurn.Image = graphics.TurnIndicator[chess960.Turn];
+            }
+            else
+            {
+                picTurn.Image = graphics.TurnIndicator[Player.WHITE];
+            }
 
             // if not creating a board
             if (!m_manualBoard)
@@ -194,6 +204,11 @@ namespace Chess
 
                 // if game over just stop timers
                 if (chess != null && (m_checkmate || chess.detectCheckmate()))
+                {
+                    tmrWhite.Stop();
+                    tmrBlack.Stop();
+                }
+                if (chess960 != null && (m_checkmate || chess960.detectCheckmate()))
                 {
                     tmrWhite.Stop();
                     tmrBlack.Stop();

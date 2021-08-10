@@ -159,33 +159,227 @@ namespace Chess
 
         public void SetChess960InitialPlacement()
         {
+            Random random = new Random();
             for (int i = 0; i < 8; i++)
             {
                 SetPiece(Piece.PAWN, Player.WHITE, i, 1);
                 SetPiece(Piece.PAWN, Player.BLACK, i, 6);
             }
 
-            SetPiece(Piece.ROOK, Player.WHITE, 0, 0);
-            SetPiece(Piece.ROOK, Player.WHITE, 7, 0);
-            SetPiece(Piece.ROOK, Player.BLACK, 0, 7);
-            SetPiece(Piece.ROOK, Player.BLACK, 7, 7);
+            int num = random.Next(0, 8);
+            SetPiece(Piece.ROOK, Player.WHITE, num, 0);
 
-            SetPiece(Piece.KNIGHT, Player.WHITE, 1, 0);
-            SetPiece(Piece.KNIGHT, Player.WHITE, 6, 0);
-            SetPiece(Piece.KNIGHT, Player.BLACK, 1, 7);
-            SetPiece(Piece.KNIGHT, Player.BLACK, 6, 7);
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.ROOK, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.ROOK, Player.WHITE, num, 0);
+            }
 
-            SetPiece(Piece.BISHOP, Player.WHITE, 2, 0);
-            SetPiece(Piece.BISHOP, Player.WHITE, 5, 0);
-            SetPiece(Piece.BISHOP, Player.BLACK, 2, 7);
-            SetPiece(Piece.BISHOP, Player.BLACK, 5, 7);
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.ROOK, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.ROOK, Player.BLACK, num, 7);
+            }
 
-            SetPiece(Piece.KING, Player.WHITE, 4, 0);
-            SetPiece(Piece.KING, Player.BLACK, 4, 7);
-            Kings[Player.WHITE] = new position_t(4, 0);
-            Kings[Player.BLACK] = new position_t(4, 7);
-            SetPiece(Piece.QUEEN, Player.WHITE, 3, 0);
-            SetPiece(Piece.QUEEN, Player.BLACK, 3, 7);
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.ROOK, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.ROOK, Player.BLACK, num, 7);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.KNIGHT, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.KNIGHT, Player.WHITE, num, 0);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.KNIGHT, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.KNIGHT, Player.WHITE, num, 0);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.KNIGHT, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.KNIGHT, Player.BLACK, num, 7);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.KNIGHT, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.KNIGHT, Player.BLACK, num, 7);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.BISHOP, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.BISHOP, Player.WHITE, num, 0);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.BISHOP, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.BISHOP, Player.WHITE, num, 0);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.BISHOP, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.BISHOP, Player.BLACK, num, 7);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.BISHOP, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.BISHOP, Player.BLACK, num, 7);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.KING, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.KING, Player.WHITE, num, 0);
+                Kings[Player.WHITE] = new position_t(4, 0);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.KING, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.KING, Player.BLACK, num, 7);
+                Kings[Player.BLACK] = new position_t(4, 7);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[0][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.QUEEN, Player.WHITE, num, 0);
+            }
+            else
+            {
+                while (Grid[0][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.QUEEN, Player.WHITE, num, 0);
+            }
+
+            num = random.Next(0, 8);
+            if (Grid[7][num].piece == Piece.NONE)
+            {
+                SetPiece(Piece.QUEEN, Player.BLACK, num, 7);
+            }
+            else
+            {
+                while (Grid[7][num].piece != Piece.NONE)
+                {
+                    num = random.Next(0, 8);
+                }
+                SetPiece(Piece.QUEEN, Player.BLACK, num, 7);
+            }
         }
 
         public void SetPiece(Piece piece, Player player, int letter, int number)
