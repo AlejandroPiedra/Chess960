@@ -34,6 +34,7 @@
             this.newAIGame = new System.Windows.Forms.ToolStripMenuItem();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.new2PlayerGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.endCurrentGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.manualBoardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +77,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tmrWhite = new System.Windows.Forms.Timer(this.components);
             this.tmrBlack = new System.Windows.Forms.Timer(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitView)).BeginInit();
@@ -135,6 +135,13 @@
             this.new2PlayerGameToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.new2PlayerGameToolStripMenuItem.Text = "New Player vs Player Game";
             this.new2PlayerGameToolStripMenuItem.Click += new System.EventHandler(this.NewGame);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(270, 26);
+            this.toolStripMenuItem1.Text = "Chess960";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // endCurrentGameToolStripMenuItem
             // 
@@ -311,7 +318,7 @@
             // mnuDif1
             // 
             this.mnuDif1.Name = "mnuDif1";
-            this.mnuDif1.Size = new System.Drawing.Size(224, 26);
+            this.mnuDif1.Size = new System.Drawing.Size(181, 26);
             this.mnuDif1.Tag = "1";
             this.mnuDif1.Text = "Beginner ( 1 )";
             this.mnuDif1.Click += new System.EventHandler(this.Difficulty);
@@ -319,7 +326,7 @@
             // mnuDif2
             // 
             this.mnuDif2.Name = "mnuDif2";
-            this.mnuDif2.Size = new System.Drawing.Size(224, 26);
+            this.mnuDif2.Size = new System.Drawing.Size(181, 26);
             this.mnuDif2.Tag = "2";
             this.mnuDif2.Text = "Easy ( 2 )";
             this.mnuDif2.Click += new System.EventHandler(this.Difficulty);
@@ -329,7 +336,7 @@
             this.mnuDif3.Checked = true;
             this.mnuDif3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnuDif3.Name = "mnuDif3";
-            this.mnuDif3.Size = new System.Drawing.Size(224, 26);
+            this.mnuDif3.Size = new System.Drawing.Size(181, 26);
             this.mnuDif3.Tag = "3";
             this.mnuDif3.Text = "Medium ( 3 )";
             this.mnuDif3.Click += new System.EventHandler(this.Difficulty);
@@ -337,7 +344,7 @@
             // mnuDif4
             // 
             this.mnuDif4.Name = "mnuDif4";
-            this.mnuDif4.Size = new System.Drawing.Size(224, 26);
+            this.mnuDif4.Size = new System.Drawing.Size(181, 26);
             this.mnuDif4.Tag = "4";
             this.mnuDif4.Text = "Hard ( 4 )";
             this.mnuDif4.Click += new System.EventHandler(this.Difficulty);
@@ -345,7 +352,7 @@
             // mnuDif5
             // 
             this.mnuDif5.Name = "mnuDif5";
-            this.mnuDif5.Size = new System.Drawing.Size(224, 26);
+            this.mnuDif5.Size = new System.Drawing.Size(181, 26);
             this.mnuDif5.Tag = "5";
             this.mnuDif5.Text = "Insane ( 5 )";
             this.mnuDif5.Click += new System.EventHandler(this.Difficulty);
@@ -380,7 +387,7 @@
             this.splitView.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitView.IsSplitterFixed = true;
             this.splitView.Location = new System.Drawing.Point(0, 28);
-            this.splitView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitView.Margin = new System.Windows.Forms.Padding(4);
             this.splitView.Name = "splitView";
             // 
             // splitView.Panel1
@@ -403,7 +410,7 @@
             this.splitView.Panel2.Controls.Add(this.label2);
             this.splitView.Panel2MinSize = 200;
             this.splitView.Size = new System.Drawing.Size(845, 515);
-            this.splitView.SplitterDistance = 624;
+            this.splitView.SplitterDistance = 621;
             this.splitView.SplitterWidth = 5;
             this.splitView.TabIndex = 2;
             // 
@@ -432,7 +439,7 @@
             // picTurn
             // 
             this.picTurn.Location = new System.Drawing.Point(119, 15);
-            this.picTurn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picTurn.Margin = new System.Windows.Forms.Padding(4);
             this.picTurn.Name = "picTurn";
             this.picTurn.Size = new System.Drawing.Size(52, 25);
             this.picTurn.TabIndex = 5;
@@ -451,7 +458,7 @@
             // txtLog
             // 
             this.txtLog.Location = new System.Drawing.Point(21, 111);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(4);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -511,12 +518,6 @@
             // 
             this.tmrBlack.Tick += new System.EventHandler(this.tmrBlack_Tick);
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(270, 26);
-            this.toolStripMenuItem1.Text = "Chess960";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -526,7 +527,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(861, 605);
             this.Name = "MainForm";
             this.Text = "Chess";

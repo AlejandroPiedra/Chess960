@@ -216,5 +216,10 @@ namespace Chess
                 prgThinking.Style = ProgressBarStyle.Continuous;
             }
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NewGame(0);
+        }
     }
 }
